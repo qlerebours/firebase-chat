@@ -11,7 +11,6 @@ import {
   Toaster
 } from "@blueprintjs/core";
 import Layout from "../components/layout";
-import firebase from 'firebase';
 import {setUserInStorage} from "../services/storage";
 
 const Login = () => {
@@ -26,8 +25,8 @@ const Login = () => {
 
   const handleImageUpload = (evt) => {
     console.log(evt.target.files);
-    const task = firebase.storage().ref(`/users/avatar/${email}`).put(evt.target.files[0]);
-    task.on('state_changed', handleTransfer, handleUploadFailed, () => handleUploadSucceed(task))
+    // TODO upload the image (with evt.target.files[0])
+    // TODO handle task change
   };
 
   const handleTransfer = (transfer) => {
@@ -54,22 +53,22 @@ const Login = () => {
       return;
     }
 
-    await firebase.auth().createUserWithEmailAndPassword(email, password);
-    const firebaseUser = firebase.auth().currentUser;
-    console.log(firebaseUser);
+    // TODO create account (createUserWithEmailAndPassword)
+    // TODO get current user
 
-    await addUserInDatabase(firebaseUser);
+    // TODO save user in database
+    //console.log(firebaseUser);
+    // await addUserInDatabase(firebaseUser);
   };
 
   const addUserInDatabase = async (firebaseUser) => {
-
     const user = {
       uid: firebaseUser.uid,
       email,
       profilePictureUrl,
     };
 
-    await firebase.database().ref('/users').push(user);
+    // TODO save in database
     setUserInStorage(user);
     Router.push('/chat');
   };

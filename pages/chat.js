@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Button, Card, Elevation, FormGroup, H5, TextArea} from "@blueprintjs/core";
 import Layout from "../components/layout";
-import firebase from 'firebase';
 import {Intent} from "@blueprintjs/core/lib/cjs/common/intent";
 import {getUserInStorage} from "../services/storage";
 
@@ -19,28 +18,21 @@ const Login = () => {
     handleNewMessages();
   }, []);
 
-  const submitMessage = () => {
-    firebase.database().ref('/messages').push({
-      text: currentMessage,
-      userUid: currentUser.uid,
-    });
-    setCurrentMessage("");
-  };
-
   const joinRoom = (user) => {
-    firebase.database().ref('/roomUsers').push(user);
+    // TODO
   };
 
   const handleNewMessages = () => {
-    firebase.database().ref('/messages').on('child_added', (messageSnap) => {
-      setMessages(messages => [...messages, messageSnap.val()]);
-    });
+    // TODO
   };
 
   const handleNewUsers = () => {
-    firebase.database().ref('/roomUsers').on('child_added', (userSnap) => {
-      setUsers(users => [...users, userSnap.val()]);
-    });
+    // TODO
+  };
+
+  const submitMessage = () => {
+    // TODO
+    setCurrentMessage("");
   };
 
   const onEnterPress = (e) => {
