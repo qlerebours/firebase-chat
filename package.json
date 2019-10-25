@@ -1,0 +1,21 @@
+{
+  "name": "firebase-quicky",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@blueprintjs/core": "^3.19.1",
+    "@livechat/ui-kit": "^0.4.0-7",
+    "@zeit/next-css": "^1.0.1",
+    "firebase": "^7.2.1",
+    "next": "9.1.1",
+    "react": "^16.10.2",
+    "react-chat-ui": "^0.3.2",
+    "react-dom": "16.10.2",
+    "reactstrap": "^8.1.1"
+  }
+}

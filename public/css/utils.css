@@ -1,0 +1,82 @@
+.d-flex {
+    display: flex;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.flex-column {
+    flex-direction: column;
+}
+.flex-column-reverse {
+    flex-direction: column-reverse;
+}
+
+.justify-flex-end {
+    justify-content: flex-end;
+}
+
+.page-full-height {
+ min-height: 100VH;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.background-nature {
+    background: linear-gradient(to right, rgba(15, 32, 39, 0.91), rgba(32, 58, 67, 0.91), rgba(44, 83, 100, 0.9)), url("https://images.unsplash.com/photo-1465189684280-6a8fa9b19a7a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80 1950w") no-repeat center center;
+    background-size: cover;
+}
+
+.p-3 {
+    padding: 3rem;
+}
+
+.mb-2 {
+    margin-bottom: 2rem;
+}
+
+.flex-1 {
+    flex: 1;
+}
+.flex-4 {
+    flex: 4;
+}
+
+.flex-0-2 {
+    flex: 0.2;
+}
+.flex-0-6 {
+    flex: 0.6;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.avatar-wrapper {
+    margin-right: 1rem;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+}
+
+.message {
+    background-color: #5890dc;
+    color: white;
+    padding: 5px;
+    border-radius: 14px;
+    margin-top: 8px;
+    align-self: flex-start;
+}
+
+.message.as--mine {
+    align-self: flex-end;
+    background-color: #2a2a2a;
+}
