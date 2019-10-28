@@ -148,7 +148,7 @@ const Login = () => {
           </FormGroup>
 
           <div className="flex-center">
-            <Button onClick={submit} intent="primary">Submit</Button>
+            <Button onClick={submit} intent="primary" disabled={!profilePictureUrl}>Submit</Button>
           </div>
         </Card>
       </div>

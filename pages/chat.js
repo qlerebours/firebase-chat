@@ -66,8 +66,8 @@ const Chat = () => {
           </H5>
           <div className="d-flex">
             {
-              users.map(u => (
-                <div className="avatar-wrapper" key={u.uid}>
+              users.map((u, i) => (
+                <div className="avatar-wrapper" key={`${u.uid}-${i}`}>
                   <img src={u.profilePictureUrl} className="avatar" alt="user image" />
                 </div>
               ))
