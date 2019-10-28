@@ -1,26 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import Layout from "../components/layout";
+import React, {useEffect, useState} from 'react';
+import Login from "./login";
 
-const Home = () => {
-  const [] = useState();
-
-  useEffect(() => {
-
-  }, []);
-
-  return (
-    <Layout>
-      <p>Coucou</p>
-    </Layout>
-  );
-};
+const Home = () => (
+  <Login/>
+);
 
 export default Home;
 
-Home.propTypes = {
+Home.propTypes = {};
 
-};
-
-Home.defaultProps = {
-
-};
+Home.defaultProps = {};

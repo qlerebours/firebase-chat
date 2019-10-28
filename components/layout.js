@@ -5,7 +5,15 @@ import firebase from 'firebase';
 const Layout = ({ children }) => {
   useEffect(() => {
     if (!firebase.apps.length) {
-      // TODO: firebase.initializeApp();
+      firebase.initializeApp({
+        apiKey: "AIzaSyAUFg4uLIWyQH-T6zADpbV4b37uaQ6qUnk",
+        authDomain: "dailyfirebase-31c30.firebaseapp.com",
+        databaseURL: "https://dailyfirebase-31c30.firebaseio.com",
+        projectId: "dailyfirebase-31c30",
+        storageBucket: "dailyfirebase-31c30.appspot.com",
+        messagingSenderId: "1011209135757",
+        appId: "1:1011209135757:web:261b1a8ac8029210c3a4c4"
+      });
     }
   }, []);
 

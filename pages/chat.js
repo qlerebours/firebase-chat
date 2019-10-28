@@ -3,8 +3,10 @@ import {Button, Card, Elevation, FormGroup, H5, TextArea} from "@blueprintjs/cor
 import Layout from "../components/layout";
 import {Intent} from "@blueprintjs/core/lib/cjs/common/intent";
 import {getUserInStorage} from "../services/storage";
+import firebase from 'firebase';
+import {getImageSrcFromMessage, getMessageClassFromUserUid} from "../services/chat";
 
-const Login = () => {
+const Chat = () => {
   const [currentUser, setCurrentUser] = useState(null);
   const [users, setUsers] = useState([]);
   const [messages, setMessages] = useState([]);
@@ -20,18 +22,30 @@ const Login = () => {
 
   const joinRoom = (user) => {
     // TODO
-  };
-
-  const handleNewMessages = () => {
-    // TODO
+    firebase.database().ref('/roomUsers').push(user);
   };
 
   const handleNewUsers = () => {
     // TODO
+    firebase.database().ref('/roomUsers').on('child_added', (userSnap) => {
+      setUsers(users => [...users, userSnap.val()]);
+    });
+  };
+
+  const handleNewMessages = () => {
+    // TODO
+    firebase.database().ref('/messages').on('child_added', (messagesSnap) => {
+      console.log(messagesSnap, messagesSnap.val());
+      setMessages(messages => [...messages, messagesSnap.val()]);
+    });
   };
 
   const submitMessage = () => {
     // TODO
+    firebase.database().ref('/messages').push({
+      text: currentMessage,
+      userUid: currentUser.uid,
+    });
     setCurrentMessage("");
   };
 
@@ -53,8 +67,8 @@ const Login = () => {
           <div className="d-flex">
             {
               users.map(u => (
-                <div className="avatar-wrapper">
-                  <img key={u.uid} src={u.profilePictureUrl} className="avatar" alt="user image" />
+                <div className="avatar-wrapper" key={u.uid}>
+                  <img src={u.profilePictureUrl} className="avatar" alt="user image" />
                 </div>
               ))
             }
@@ -72,7 +86,10 @@ const Login = () => {
           <div className="d-flex flex-column justify-flex-end flex-1">
             {
               messages.map(m => (
-                <div key={m.text} className={`message ${m.userUid === currentUser.uid ? 'as--mine' : ''}`}>{m.text}</div>
+                <div key={m.text} className={`d-flex message-wrapper ${getMessageClassFromUserUid(m.userUid, currentUser.uid)}`}>
+                  <img src={getImageSrcFromMessage(m, users)} alt="user" className="avatar as--sm" />
+                  <div className="message">{m.text}</div>
+                </div>
               ))
             }
           </div>
@@ -107,4 +124,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Chat;
